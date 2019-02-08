@@ -91,9 +91,10 @@
   !*** ./src/js/index.js ***!
   \*************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("// import React from 'react' \n// import ReactDOM from 'react-dom'\n// import App from './App'\n\n// ReactDOM.render(<App />, document.getElementById('root'))\n\nconsole.log('Souce index.js')\n\n//# sourceURL=webpack:///./src/js/index.js?");
+"use strict";
+eval("\n\n// import React from 'react' \n// import ReactDOM from 'react-dom'\n// import App from './App'\n\n// ReactDOM.render(<App />, document.getElementById('root'))\n\nvar layers = document.querySelectorAll('.layer');\n\nwindow.addEventListener('scroll', function () {\n\tlayers.forEach(function (layer) {\n\t\tvar speed = layer.getAttribute('data-speed');\n\t\tvar movement = -(window.scrollY * speed);\n\t\tlayer.style.transform = 'translateY(' + movement + 'px)';\n\t});\n});\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ })
 

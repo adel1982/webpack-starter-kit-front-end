@@ -1,7 +1,9 @@
-// import React from 'react' 
-// import ReactDOM from 'react-dom'
-// import App from './App'
+const layers = document.querySelectorAll('.layer');
 
-// ReactDOM.render(<App />, document.getElementById('root'))
-
-console.log('Souce index.js')
+window.addEventListener('scroll', () => {
+	layers.forEach(layer => {
+		let speed 		= layer.getAttribute('data-speed');
+		let movement 	= - (window.scrollY * speed); 	
+		layer.style.transform = 'translateY(' + movement + 'px)';
+	});
+});
