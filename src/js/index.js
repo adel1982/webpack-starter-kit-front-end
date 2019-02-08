@@ -4,6 +4,7 @@ import App from './App'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
+
 const layers = document.querySelectorAll('.layer');
 
 window.addEventListener('scroll', () => {
