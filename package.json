@@ -1,0 +1,24 @@
+{
+  "name": "webpack-starter-kit-front-end",
+  "version": "1.0.0",
+  "description": "Webpack Starter Kit",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adel1982/webpack-starter-kit-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adel1982/webpack-starter-kit-front-end/issues"
+  },
+  "homepage": "https://github.com/adel1982/webpack-starter-kit-front-end#readme",
+  "devDependencies": {
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
+}
