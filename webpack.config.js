@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-	template:'./src/public/index.html'
+	template:'./src/index.html'
 })
 
 module.exports = {
-	entry: './src/index.js',
+	entry: './src/js/index.js',
 	output: {
 		path: path.join(__dirname, '/build/'), 
 		filename: 'main.js'
@@ -34,10 +34,12 @@ module.exports = {
 						loader: 'css-loader',
 						options: {
 							modules: true,
-							localIdentName: '[name]_[local]_[hash:base64]'
+							localIdentName: '[name]_[local]_[hash:base64]',
 							//minimize: true
+							sourceMap: true
 						}
-					}
+					},
+					'sass-loader'
 				]
 			}
 		]

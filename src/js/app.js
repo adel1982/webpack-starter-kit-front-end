@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import style from './App.css'
-import plop from './plop.css'
+import style from '../css/app.css'
+import plop from '../css/plop.css'
+//import styles from '../scss/main.scss'
 
 class App extends Component {
 	render () {
