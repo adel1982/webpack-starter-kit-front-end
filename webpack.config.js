@@ -1,3 +1,4 @@
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -7,10 +8,10 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-	entry: './src/js/app.js',
+	entry: './src/js/main.js',
 	output: {
-		path: path.join(__dirname, '/build/'), // On prends l'adresse du fichier de config et on lui joint /build/
-		filename: 'main.js'
+		path: path.join(__dirname, '/build/'), 
+		filename: 'build.js'
 	},
 	module: {
 		rules: [
@@ -20,6 +21,10 @@ module.exports = {
 				use: {
 					loader: 'babel-loader'
 				}
+			},
+			{
+				test: /\.scss$/,
+				loader: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
 			},
 			{
 				test: /\.css$/,
