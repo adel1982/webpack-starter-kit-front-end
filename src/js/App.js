@@ -1,20 +1,22 @@
-import React, { Component } from 'react'
+var score = 10	
 
-// import style from './App.css'
-
-class App extends Component {
-	render () {
-		return (
-			<div>
-				<header>
-					<h1>Salut to Hardcoders</h1>
-				</header>
-				<p>
-					To get started, edit <code>src/App.js</code> and save to reload.
-				</p>
-			</div>
-		)
-	}
+function add () {
+	var newScore = score + 5;
+	console.log(newScore);
 }
 
-export default App
+if (score > 5) {
+	var newScore = 15
+	console.log(newScore);
+}
+
+console.log(newScore);
+
+// -------------------- //
+
+const obj = {
+	nom: 'adel'
+}
+
+obj.nom = 'jean'; // Vous pouvez modifier le nom de cet objet, même si il a été défini avec const
+	

@@ -4,7 +4,7 @@
   "description": "Webpack Starter Kit",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -21,13 +21,12 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "css-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
     "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   },
-  "dependencies": {
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
-  }
+  "dependencies": {}
 }
