@@ -23,11 +23,7 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.scss$/,
-				loader: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
-			},
-			{
-				test: /\.css$/,
+				test: /\.(css|scss)$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
@@ -36,10 +32,14 @@ module.exports = {
 							modules: true,
 							localIdentName: '[name]_[local]_[hash:base64]',
 							//minimize: true
-							sourceMap: true
 						}
-					},
-					'sass-loader'
+					}, 
+					{
+            loader: 'sass-loader',
+            options: {
+            	sourceMap: true,
+						}
+					}
 				]
 			}
 		]
