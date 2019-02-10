@@ -1,5 +1,14 @@
-$midnight-blue : #2c3e50;
-
-.container {
-  background-color: $midnight-blue;
+html {
+  box-sizing: border-box;
+  background-color: $outer-space;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+.header {
+	height: 150px;
+	padding: 20px;
+	color: #fff;
 }
