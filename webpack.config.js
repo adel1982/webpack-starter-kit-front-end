@@ -8,6 +8,8 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 	template:'./src/index.html'
 })
 
+// TEST
+
 module.exports = {
 	entry : './src/js/index.js',
 	output: {
