@@ -8,9 +8,15 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 	template: './src/index.html'
 })
 
-// TEST
+let webpackPort = 8900
+let jarvisPort = 5000
 
 module.exports = {
+	devServer: {
+    contentBase: path.join(__dirname, '/build/'),
+    compress: true,
+		port: webpackPort,
+  },
 	entry : './src/js/index.js',
 	output: {
 		path    : path.join(__dirname, '/build/'),
@@ -32,6 +38,7 @@ module.exports = {
 						options: {
 							modules: true,
 							localIdentName: '[name]_[local]_[hash:base64]',
+							sourceMap: true
 							//minimize: true
 						}
 					}, 
@@ -49,7 +56,7 @@ module.exports = {
 		htmlWebpackPlugin,
 		new MiniCssExtractPlugin(),
 		new Jarvis({
-			port: 1337 
+			port: jarvisPort 
 		})
 	]
 }
