@@ -1,25 +1,32 @@
-
 const path                 = require('path');
 const HtmlWebpackPlugin    = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin 	 = require('copy-webpack-plugin');
 const Jarvis               = require("webpack-jarvis");
 
+const build = '/build/';
+
+const paths = {
+	src  : path.join(__dirname, './src'),
+	build: path.join(__dirname, './build')
+};
+
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
-	template: './src/index.html'
+	template: `${paths.src}/index.html`
 })
 
 let webpackPort = 8900
-let jarvisPort = 5000
+let jarvisPort  = 5000
 
 module.exports = {
 	devServer: {
-    contentBase: path.join(__dirname, '/build/'),
+    contentBase: path.join(__dirname, build),
     compress: true,
-		port: webpackPort,
+    port: webpackPort,
   },
-	entry : './src/js/index.js',
+	entry: `${paths.src}/js/index.js`,
 	output: {
-		path    : path.join(__dirname, '/build/'),
+		path: path.join(__dirname, build),
 		filename: 'main.js'
 	},
 	module: {
@@ -57,6 +64,12 @@ module.exports = {
 		new MiniCssExtractPlugin(),
 		new Jarvis({
 			port: jarvisPort 
-		})
+		}),
+		new CopyWebpackPlugin([
+			{
+				from: path.join(`${paths.src}/favicon.ico`),
+				to  : path.join(`${paths.build}/favicon.ico`)
+			}
+		]),
 	]
 }
