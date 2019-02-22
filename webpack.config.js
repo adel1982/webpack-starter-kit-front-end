@@ -45,15 +45,20 @@ module.exports = {
 						options: {
 							modules: true,
 							localIdentName: '[name]_[local]_[hash:base64]',
-							sourceMap: true
-							//minimize: true
+							importLoaders: 1
 						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							config: {
+								path: __dirname + '/postcss.config.js'
+							},
+							sourceMap: true
+						},
 					}, 
 					{
-            loader: 'sass-loader',
-            options: {
-            	sourceMap: true,
-						}
+            loader: 'sass-loader'
 					}
 				]
 			}
