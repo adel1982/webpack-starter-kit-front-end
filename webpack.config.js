@@ -46,6 +46,7 @@ module.exports = {
 			  }
 			},
 			{
+<<<<<<< HEAD
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -95,6 +96,32 @@ module.exports = {
 						}
           }
         ]
+=======
+				test: /\.(css|scss)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[name]_[local]_[hash:base64]',
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							config: {
+								path: __dirname + '/postcss.config.js'
+							},
+							sourceMap: true
+						},
+					}, 
+					{
+            loader: 'sass-loader'
+					}
+				]
+>>>>>>> 13458c5bdb5a8ca6a9a32ba8a32bcca40c1a5aa4
 			}
 		]
   },
