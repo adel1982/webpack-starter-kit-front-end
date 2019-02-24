@@ -1,115 +1,80 @@
 const path                 = require('path');
-const HtmlWebpackPlugin    = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin    = require('copy-webpack-plugin');
+// const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const Jarvis               = require("webpack-jarvis");
 
-const build = '/build/';
-
-const paths = {
-  src  : path.join(__dirname, './src'),
-  build: path.join(__dirname, './build')
-};
-
-const htmlWebpackPlugin = new HtmlWebpackPlugin({
-  template: `${paths.src}/index.html`
-})
-
-let webpackPort = 8900
+let webpackPort = 3000
 let jarvisPort  = 5000
 
-const env = process.env.NODE_ENV;
-
 module.exports = {
-	mode: env || 'development',
-  devServer: {
-    contentBase: path.join(__dirname, build),
-    compress   : true,
-    port       : webpackPort,
-  },
-  entry: `${paths.src}/js/index.js`,
+	mode: 'development',
+	
+	entry: path.resolve(__dirname, 'src', 'index.js'),
+	
   output: {
-    path    : path.join(__dirname, build),
-    filename: 'main.js'
-  },
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/dist/'
+	},
+	
   module: {
     rules: [
 			{
-			  test: /\.html$/,
-			  use: {
-			    loader: 'html-loader',
-			    options: {
-			      minimize: true,
-        		removeComments: false,
-        		collapseWhitespace: false
-			    }
-			  }
-			},
-			{
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.ico$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
         }
       },
       {
-        test: /\.(css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]_[local]_[hash:base64]',
-              importLoaders: 1
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: __dirname + '/postcss.config.js'
-              },
-              sourceMap: true
-            }
-          }
-        ]
+        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: '/images',
+          publicPath: 'images'
+        }
       },
       {
-        test: /.scss$/,
-        use: [{
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              camelCase: 'dashes',
-              localIdentName: '[name]_[local]_[hash:base64]',
-            }
-          },
-          {
-						loader: 'sass-loader',
-						options: {
-							sourceMap: true 
-						}
-          }
+        test: /\.(woff|woff2|ttf|eot)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: '/fonts',
+          publicPath: 'fonts'
+        },
+      },
+      {
+        test: /\.(css|sass|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
         ]
-			}
-		]
-  },
+      }
+		],
+	},
+	
+	devServer: {
+    port       : webpackPort,
+    contentBase: path.resolve(__dirname, 'src'),
+	},
+
   plugins: [
-    htmlWebpackPlugin,
     new MiniCssExtractPlugin({
-			filename: "[name].css",
-			chunkFilename: "[id].css"
-		}),
+      filename: 'styles.css',
+    }),
     new Jarvis({
       port: jarvisPort
     }),
-    new CopyWebpackPlugin([{
-      from: path.join(`${paths.src}/img/favicon.ico`),
-      to  : path.join(`${paths.build}/img/favicon.ico`)
-    }]),
+    // new CopyWebpackPlugin([{
+    //   from: path.resolve('src/img/favicon.ico'),
+    //   to  : path.resolve('build/img/favicon.ico')
+    // }]),
   ]
 }
