@@ -18,10 +18,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 let webpackPort = 8900
 let jarvisPort  = 5000
 
-const env = process.env.NODE_ENV;
-
 module.exports = {
-	mode: env || 'development',
   devServer: {
     contentBase: path.join(__dirname, build),
     compress   : true,
@@ -94,7 +91,31 @@ module.exports = {
 							sourceMap: true 
 						}
           }
-        ]
+        ],
+				test: /\.(css|scss)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[name]_[local]_[hash:base64]',
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							config: {
+								path: __dirname + '/postcss.config.js'
+							},
+							sourceMap: true
+						},
+					}, 
+					{
+            loader: 'sass-loader'
+					}
+				]
 			}
 		]
   },
