@@ -1,6 +1,5 @@
 const path                 = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin    = require('copy-webpack-plugin');
 const Jarvis               = require("webpack-jarvis");
 
 let webpackPort = 3000
@@ -71,10 +70,6 @@ module.exports = {
     }),
     new Jarvis({
       port: jarvisPort
-    }),
-    new CopyWebpackPlugin([{
-      from: path.resolve('src/img/favicon.ico'),
-      to  : path.resolve('dist/img/favicon.ico')
-    }]),
+    })
   ]
 }
