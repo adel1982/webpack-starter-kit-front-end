@@ -7,10 +7,19 @@ let webpackPort = 3000
 let jarvisPort  = 5000
 
 module.exports = {
+<<<<<<< HEAD
 	mode: 'development',
 	
 	entry: path.resolve(__dirname, 'src', 'index.js'),
 	
+=======
+  devServer: {
+    contentBase: path.join(__dirname, build),
+    compress   : true,
+    port       : webpackPort,
+  },
+  entry: `${paths.src}/js/index.js`,
+>>>>>>> 8d5b27646d619577faf517e0b04417c9292439ad
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -20,6 +29,20 @@ module.exports = {
   module: {
     rules: [
 			{
+<<<<<<< HEAD
+=======
+			  test: /\.html$/,
+			  use: {
+			    loader: 'html-loader',
+			    options: {
+			      minimize: true,
+        		removeComments: false,
+        		collapseWhitespace: false
+			    }
+			  }
+			},
+			{
+>>>>>>> 8d5b27646d619577faf517e0b04417c9292439ad
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
@@ -41,6 +64,7 @@ module.exports = {
         }
       },
       {
+<<<<<<< HEAD
         test: /\.(woff|woff2|ttf|eot)$/,
         loader: 'file-loader',
         options: {
@@ -65,6 +89,54 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'src'),
 	},
 
+=======
+        test: /.scss$/,
+        use: [{
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: 'dashes',
+              localIdentName: '[name]_[local]_[hash:base64]',
+            }
+          },
+          {
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true 
+						}
+          }
+        ],
+				test: /\.(css|scss)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							localIdentName: '[name]_[local]_[hash:base64]',
+							importLoaders: 1
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							config: {
+								path: __dirname + '/postcss.config.js'
+							},
+							sourceMap: true
+						},
+					}, 
+					{
+            loader: 'sass-loader'
+					}
+				]
+			}
+		]
+  },
+>>>>>>> 8d5b27646d619577faf517e0b04417c9292439ad
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'styles.css',
