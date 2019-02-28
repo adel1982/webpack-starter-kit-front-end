@@ -1,11 +1,6 @@
-@font-face {
-	font-family: 'afta_sansregular';
-	src: url('/fonts/aftasansthin-regular-webfont.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
 .title {
-	font-family: 'afta_sansregular';
+	font-family: 'Roboto', sans-serif;
 	font-size: 1.5em;
 }
