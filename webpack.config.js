@@ -81,9 +81,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'./src/index.html'
     }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
-    }),
+    new MiniCssExtractPlugin(),
     new Jarvis({
       port: jarvisPort
     })
