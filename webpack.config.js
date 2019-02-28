@@ -9,12 +9,11 @@ let jarvisPort  = 5000
 module.exports = {
 	mode: 'development',
 	
-	entry: path.resolve(__dirname, 'src', 'index.js'),
+	entry: './src/index.js',
 	
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    path: path.join(__dirname, '/dist/'),
+    filename: 'bundle.js'
 	},
 	
   module: {
@@ -69,9 +68,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template:'./src/index.html'
     }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css',
-    }),
+    new MiniCssExtractPlugin(),
     new Jarvis({
       port: jarvisPort
     })
