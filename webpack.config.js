@@ -9,12 +9,11 @@ let jarvisPort  = 5000
 module.exports = {
 	mode: 'development',
 	
-	entry: path.resolve(__dirname, 'src', 'index.js'),
+	entry: './src/index.js',
 	
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    path: path.join(__dirname, '/dist/'),
+    filename: 'bundle.js'
 	},
 	
   module: {
@@ -32,31 +31,44 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|jpeg|svg|gif)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: '/images',
-          publicPath: 'images'
-        }
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              bypassOnDebug: true
+            }
+          }
+        ]
       },
       {
         test: /\.(woff|woff2|ttf|eot)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: '/fonts',
-          publicPath: 'fonts'
+          outputPath: './src/assets/fonts',
         },
       },
       {
-        test: /\.(css|sass|scss)$/,
+        test: /\.css$/,
         use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader"
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'sass-loader'
-        ]
-      }
+      ]
+      },
 		],
 	},
 	
