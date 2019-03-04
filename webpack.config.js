@@ -7,25 +7,23 @@ let webpackPort = 3000
 let jarvisPort  = 5000
 
 module.exports = {
-	mode: 'development',
-	
-	entry: './src/index.js',
-	
+  mode : 'development',
+  entry: './src/index.js',
+
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path    : path.join(__dirname, '/dist/'),
     filename: 'bundle.js'
-	},
-	
+  },
+
   module: {
-    rules: [
-			{
-        test: /\.(js|jsx)$/,
+    rules: [{
+        test   : /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader : 'babel-loader'
       },
       {
-        test: /\.ico$/,
-        loader: 'file-loader',
+        test   : /\.ico$/,
+        loader : 'file-loader',
         options: {
           name: '[name].[ext]',
         }
@@ -51,26 +49,34 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-      ]
+        test: /.scss$/,
+        use: [{
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              camelCase: 'dashes',
+              localIdentName: '[path][name]__[local]'
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       },
-		],
-	},
-	
-	devServer: {
-    port       : webpackPort,
+    ],
+  },
+
+  devServer: {
+    port: webpackPort,
     contentBase: path.resolve(__dirname, 'src'),
-	},
+  },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template:'./src/index.html'
+      template: './src/index.html'
     }),
     new MiniCssExtractPlugin(),
     new Jarvis({

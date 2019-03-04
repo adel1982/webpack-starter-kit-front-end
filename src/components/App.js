@@ -10,7 +10,7 @@ class App extends Component {
 				<h1 className={sassy.title}>Webpack Starter Kit</h1>
 				<h1 className={sassy.title}>Hello</h1>
 				</header>
-				<img src={image}/>>
+				<img src={image} width="200"/>
 				<p className={sassy.description}>
 					To get started, edit <code>src/App.js</code> and save to reload.
 				</p>
