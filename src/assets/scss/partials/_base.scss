@@ -7,12 +7,22 @@ html {
 *::after {
   box-sizing: inherit;
 }
-.header {
-	color: #fff;
-}
+/*------------------------------------*\
+    $ APP 
+\*------------------------------------*/
 .app {
-  border: 1px dashed red;
-}
-.description {
-  color: orange;
+  margin: 0 auto;
+  max-width: 1024px;
+  text-align: center;
+  .logo {
+    width: auto; height: 35px;
+  }
+  .content {
+    position: relative;
+    .reactIcon {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: auto; height: 200px;
+    }
+  }
 }
