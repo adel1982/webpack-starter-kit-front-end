@@ -68,7 +68,8 @@ module.exports = {
       },
       {
         test: /.scss$/,
-        use: [{
+        use: [
+          {
             loader: 'style-loader'
           },
           {
@@ -79,7 +80,11 @@ module.exports = {
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              sourceMapContents: false
+            }
           }
         ]
       },
