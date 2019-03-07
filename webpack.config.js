@@ -14,22 +14,21 @@ module.exports = {
     path: path.join(__dirname, '/dist/'),
     filename: 'bundle.js'
   },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          enforce: true,
-          chunks: 'all'
-        }
-      }
-    }
-  },
   devtool: 'eval-sourcemap',
   module: {
-    rules: [{
+    rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: {
+              minimize: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
@@ -68,8 +67,7 @@ module.exports = {
       },
       {
         test: /.scss$/,
-        use: [
-          {
+        use: [{
             loader: 'style-loader'
           },
           {
@@ -80,11 +78,7 @@ module.exports = {
             }
           },
           {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              sourceMapContents: false
-            }
+            loader: 'sass-loader'
           }
         ]
       },
