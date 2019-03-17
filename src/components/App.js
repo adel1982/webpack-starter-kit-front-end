@@ -4,7 +4,6 @@ import sassy from '../assets/scss/main.scss';
 import favicon from '../assets/img/favicon.ico';
 import webpackLogo from '../assets/img/webpack.svg';
 import webpackSchema from '../assets/img/webpack.jpg';
-import reactIcon from '../assets/img/React-icon.svg';
 
 class App extends Component {
 	render () {
@@ -14,7 +13,6 @@ class App extends Component {
 					<img src={webpackLogo} className={sassy.logo}/>
 				</header>
 				<div className={sassy.content}>
-					<img src={reactIcon} className={sassy.reactIcon}/>
 					<img src={webpackSchema}/>
 				</div>
 			</div>

@@ -8,25 +8,22 @@ let jarvisPort = 5000
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
 
+  entry: './src/index.js',
   output: {
-    path: path.join(__dirname, '/dist/'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   devtool: 'eval-sourcemap',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: {
-              minimize: true
-            }
+        use: [{
+          loader: 'html-loader',
+          options: {
+            minimize: true
           }
-        ]
+        }]
       },
       {
         test: /\.(js|jsx)$/,
@@ -42,8 +39,7 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          {
+        use: [{
             loader: 'file-loader',
             options: {
               outputPath: 'img',
