@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -40,7 +40,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.0",
-    "webpack-jarvis": "^0.3.2"
+    "webpack-jarvis": "^0.3.2",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "react": "^16.8.3",

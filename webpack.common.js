@@ -7,22 +7,13 @@ let webpackPort = 3000
 let jarvisPort = 5000
 
 module.exports = {
-  mode: 'development',
-
   entry: './src/index.js',
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  },
   devtool: 'eval-sourcemap',
   module: {
     rules: [{
         test: /\.html$/,
         use: [{
-          loader: 'html-loader',
-          options: {
-            minimize: true
-          }
+          loader: 'html-loader'
         }]
       },
       {
