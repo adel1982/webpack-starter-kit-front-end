@@ -1,13 +1,10 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Jarvis = require("webpack-jarvis");
-
-let webpackPort = 3000
-let jarvisPort = 5000
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+    vendor: './src/vendor.js'
+  },
   devtool: 'eval-sourcemap',
   module: {
     rules: [{
@@ -33,6 +30,7 @@ module.exports = {
         use: [{
             loader: 'file-loader',
             options: {
+              name: '[name].[hash].[ext]',
               outputPath: 'img',
             },
           },
@@ -52,38 +50,6 @@ module.exports = {
           outputPath: './src/assets/fonts',
         },
       },
-      {
-        test: /.scss$/,
-        use: [{
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]_[local]'
-            }
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
-      },
     ],
-  },
-
-  devServer: {
-    port: webpackPort,
-    contentBase: path.resolve(__dirname, 'src'),
-  },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    }),
-    new MiniCssExtractPlugin(),
-    new Jarvis({
-      port: jarvisPort
-    })
-  ]
+  }
 }
