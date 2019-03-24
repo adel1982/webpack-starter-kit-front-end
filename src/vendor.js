@@ -1,1 +1,1 @@
-// alert('Hi from vendor !!!!');
+var toto = document.querySelector('.toto');
