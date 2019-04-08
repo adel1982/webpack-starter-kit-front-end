@@ -2,33 +2,17 @@
     $ ANIMATION
 \*------------------------------------*/
 @mixin keyframes($animation-name) {
-	@-webkit-keyframes #{$animation-name} {
-			@content;
-	}
-	@-moz-keyframes #{$animation-name} {
-			@content;
-	}  
-	@-ms-keyframes #{$animation-name} {
-			@content;
-	}
-	@-o-keyframes #{$animation-name} {
-			@content;
-	}  
 	@keyframes #{$animation-name} {
 			@content;
 	}
 }
 
 @mixin animation($str) {
--webkit-animation: #{$str};
--moz-animation: #{$str};
--ms-animation: #{$str};
--o-animation: #{$str};
-animation: #{$str};      
+  animation: #{$str};      
 }
-/*** Usage ***/
-/*
-@include keyframes(slide-down) {
+/*** Cas d'usage ***/
+
+/* @include keyframes(slide-down) {
   0% { opacity: 1; }
   90% { opacity: 0; }
 }
@@ -38,8 +22,8 @@ animation: #{$str};
   height: 100px;
   background: black;
   @include animation('slide-down 5s 3');
-}
-*/
+} */
+
 /*------------------------------------*\
     $ MEDIA QUERIES
 \*------------------------------------*/
@@ -61,7 +45,7 @@ animation: #{$str};
   }
 }
 
-/*** Usage ***/
+/*** Cas d'usage ***/
 /*
 .sidebar {
   width: 60%;
@@ -78,13 +62,9 @@ animation: #{$str};
     $ TRANSITION 
 \*------------------------------------*/
 @mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
   transition: $args;
 }
-/*** Usage ***/
+/*** Cas d'usage ***/
 /*
 a {
   color: gray;
