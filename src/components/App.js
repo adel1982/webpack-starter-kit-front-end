@@ -10,10 +10,10 @@ class App extends Component {
 		return (
 			<div className={sassy.app}>
 				<header className={sassy.header}>
-					<img src={webpackLogo} className={sassy.logo}/>
+					<img src={webpackLogo} className={sassy.logo} alt=""/>
 				</header>
 				<div className={sassy.content}>
-					<img src={webpackSchema}/>
+					<img src={webpackSchema} alt=""/>
 				</div>
 			</div>
 		)
