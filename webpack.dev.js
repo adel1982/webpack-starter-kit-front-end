@@ -10,7 +10,7 @@ let jarvisPort  = 5000
 module.exports = merge(common, {
   mode: 'development',
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[contentHash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -25,6 +25,9 @@ module.exports = merge(common, {
             modules: true,
             localIdentName: '[name]_[local]'
           }
+        },
+        {
+          loader: 'postcss-loader' // 1 - SASS into CSS
         },
         {
           loader: 'sass-loader' // 1 - SASS into CSS
