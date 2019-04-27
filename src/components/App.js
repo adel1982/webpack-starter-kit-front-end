@@ -14,6 +14,8 @@ class App extends Component {
 				</header>
 				<div className={sassy.content}>
 					<img src={webpackSchema} alt=""/>
+					<h1>Titre</h1>
+					<p>Du text </p>
 				</div>
 			</div>
 		)

@@ -1,31 +1,19 @@
-html {
-  box-sizing: border-box;
-  background-color: $outer-space;
+$outer-space : #2b3a42;
+$gold : gold;
+
+$base__font-size: 15 !default;
+$base__line: 20 !default;
+
+@function em($px, $base: $base__font-size ) {
+  @return ($px / $base) * 1em;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-/*------------------------------------*\
-    $ APP 
-\*------------------------------------*/
-.app {
-  margin: 0 auto;
-  max-width: 1024px;
-  text-align: center;
-  .logo {
-    width: auto; height: 35px;
-  }
-  .content {
-    position: relative;
-    .reactIcon {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: auto; height: 200px;
-    }
-    img {
-      width: 100%; height: auto;
-    }
-  }
+html {
+  box-sizing: border-box;
+  background-color: $outer-space;
 }

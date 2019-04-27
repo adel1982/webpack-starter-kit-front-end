@@ -1,4 +1,5 @@
-@import "partials/variables";
-@import "partials/mixins";
-@import "partials/font";
+@import "partials/reset";
 @import "partials/base";
+@import "partials/mixins";
+@import "partials/text";
+@import "partials/app";
