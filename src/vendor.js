@@ -1,1 +1,1 @@
-var toto = document.querySelector('.toto');
+const boobafeth = document.querySelector('.toto');

@@ -1,11 +1,9 @@
 const path              = require('path');
 const common            = require('./webpack.common');
 const merge             = require('webpack-merge');
-const Jarvis            = require("webpack-jarvis");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let webpackPort = 3000
-let jarvisPort  = 5000
 
 module.exports = merge(common, {
   mode: 'development',
@@ -40,9 +38,6 @@ module.exports = merge(common, {
     contentBase: path.resolve(__dirname, 'src'),
   },
   plugins: [
-    new Jarvis({
-      port: jarvisPort
-    }),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
