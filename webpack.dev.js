@@ -9,30 +9,18 @@ let webpackPort = 3000;
 module.exports = merge(common, {
   mode: "development",
   output: {
-    filename: "[name].[contentHash].bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
   },
   module: {
     rules: [
       {
-        test: /.scss$/,
+        test: /\.scss$/,
         use: [
-          {
-            loader: "style-loader" // 3 - Inject styles into DOM
-          },
-          {
-            loader: "css-loader", // 2 - CSS into common JS
-            options: {
-              modules: true,
-              localIdentName: "[name]_[local]"
-            }
-          },
-          {
-            loader: "postcss-loader" // 1 - SASS into CSS
-          },
-          {
-            loader: "sass-loader" // 1 - SASS into CSS
-          }
+          "style-loader", // 3 - Adds CSS to the DOM by injecting a <style> tag
+          "css-loader", // 2 - Interprets @import and url() like import/require() and will resolve them.
+          "postcss-loader",
+          "sass-loader" // 1 - Loads a Sass/SCSS file and compiles it to CSS.
         ]
       }
     ]

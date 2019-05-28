@@ -1,1 +1,1 @@
-const btn = document.querySelector(".toto");
+console.log('Hello from vendor')

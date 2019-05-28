@@ -16,22 +16,12 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /.scss$/,
+        test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, // 3 - Extract CSS into file
-          {
-            loader: "css-loader", // 2 - CSS into common JS
-            options: {
-              modules: true,
-              localIdentName: "[name]_[local]"
-            }
-          },
-          {
-            loader: "postcss-loader" // 1 - SASS into CSS
-          },
-          {
-            loader: "sass-loader" // 1 - SASS into CSS
-          }
+          MiniCssExtractPlugin.loader, // 3 - Extract CSS into files
+          "css-loader", // 2 - Interprets @import and url() like import/require() and will resolve them.
+          "postcss-loader",
+          "sass-loader" // 1 - Loads a Sass/SCSS file and compiles it to CSS.
         ]
       }
     ]
@@ -39,7 +29,7 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       new OptimizeCssAssetsPlugin(),
-      new TerserPlugin(),
+      new TerserPlugin(),// Default minimize on Webpack, used in this case to overide OptimizeCssAssetsWebpackPlugin
       new HtmlWebpackPlugin({
         template: "./src/index.html",
         minify: {
