@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+body {
+  background-color: $bg-color;
+  text-align: center;
+}
+.logo {
+  display: block;
+  margin: 1rem auto;
+  width: auto;
+  height: 35px;
+}
+.logoGithub {
+  display: block;
+  margin: 0 auto;
+  width: 40px;
+}
+h1 {
+  color: #fff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}

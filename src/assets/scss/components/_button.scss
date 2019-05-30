@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.btn {
+	background-color: $brand-color;
+	border-radius: 2px;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, .45);
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1rem;
+	text-align: center;
+	&:hover {
+		opacity: .9;
+	}
+}
+.btn-rounded {
+	border-radius: 5px;
+}
+.btn-small {
+	padding: 0.5rem 1rem;
+}
+.btn-xl {
+	font-size: 2rem;
+	padding: 1rem 1.5rem;
+}
