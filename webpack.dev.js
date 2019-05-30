@@ -1,10 +1,12 @@
 const path = require("path");
 const common = require("./webpack.common");
 const merge = require("webpack-merge");
+const Jarvis = require("webpack-jarvis");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-let webpackPort = 3000;
+const webpackPort = 3000;
+const jarvisPort  = 5000
 
 module.exports = merge(common, {
   mode: "development",
@@ -17,10 +19,22 @@ module.exports = merge(common, {
       {
         test: /\.scss$/,
         use: [
-          "style-loader", // 3 - Adds CSS to the DOM by injecting a <style> tag
-          "css-loader", // 2 - Interprets @import and url() like import/require() and will resolve them.
-          "postcss-loader",
-          "sass-loader" // 1 - Loads a Sass/SCSS file and compiles it to CSS.
+          {
+            loader: "style-loader" // 3 - Extract CSS into files
+          },
+          {
+            loader: "css-loader", // 2 - Interprets @import and url() like import/require() and will resolve them.
+            options: {
+              modules: true,
+              localIdentName: "[name]_[local]"
+            }
+          },
+          {
+            loader: "postcss-loader" 
+          },
+          {
+            loader: "sass-loader" // 1 - Loads a Sass/SCSS file and compiles it to CSS.
+          }
         ]
       }
     ]
@@ -33,6 +47,9 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
-    })
+    }),
+    new Jarvis({
+      port: jarvisPort
+    }),
   ]
 });
