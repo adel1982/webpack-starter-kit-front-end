@@ -18,10 +18,22 @@ module.exports = merge(common, {
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, // 3 - Extract CSS into files
-          "css-loader", // 2 - Interprets @import and url() like import/require() and will resolve them.
-          "postcss-loader",
-          "sass-loader" // 1 - Loads a Sass/SCSS file and compiles it to CSS.
+          {
+            loader: "style-loader" // 3 - Extract CSS into files
+          },
+          {
+            loader: "css-loader", // 2 - Interprets @import and url() like import/require() and will resolve them.
+            options: {
+              modules: true,
+              localIdentName: "[name]_[local]"
+            }
+          },
+          {
+            loader: "postcss-loader" 
+          },
+          {
+            loader: "sass-loader" // 1 - Loads a Sass/SCSS file and compiles it to CSS.
+          }
         ]
       }
     ]
@@ -44,7 +56,7 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" })
   ]
 });
