@@ -1,1 +1,1 @@
-// const toto = console.log('Hello from vendor')
+const toto = console.log('Hello from vendor')

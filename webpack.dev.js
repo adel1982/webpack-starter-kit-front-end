@@ -1,12 +1,14 @@
 const path = require("path");
+
 const common = require("./webpack.common");
 const merge = require("webpack-merge");
+
 const Jarvis = require("webpack-jarvis");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const webpackPort = 3000;
-const jarvisPort  = 5000
+const jarvisPort  = 5000;
 
 module.exports = merge(common, {
   mode: "development",
